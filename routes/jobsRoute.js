@@ -1,16 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Job = require("../models/jobModel")
+const Jobs = require('../controllers/jobs');
 
-router.get("/getalljobs", async(req, res) => {
-  
-    try {
-        const jobs = await Job.find()
-        res.send(jobs)
-    } catch (error) {
-        return res.status(400).json({ error });
-    }
-
-});
+router.get("/getalljobs", Jobs.getAllJobs);
 
 module.exports = router;
